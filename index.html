@@ -34,10 +34,20 @@
   .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
   .banner {
-    position: relative; height: 260px;
+    position: relative; height: 260px; overflow: hidden;
     background: linear-gradient(135deg, var(--accent) 0%, #2E2650 100%);
     padding-top: env(safe-area-inset-top, 0px);
-  }
+}
+.banner::before {
+    content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    top: -100px; right: -80px;
+}
+.banner::after {
+    content: ''; position: absolute; width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    bottom: -120px; left: 10%;
+}
     .hamburger {
     position: absolute; top: calc(20px + env(safe-area-inset-top, 0px)); left: 24px;
     background: rgba(255,255,255,0.92); border: none; border-radius: 50%;
