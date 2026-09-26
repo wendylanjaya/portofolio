@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nama Kamu — UI/UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F5F3; --surface: #FFFFFF; --text: #1A1A1A; --text-muted: #6B6B6B;
+    --accent: #2F8F86; --accent-soft: #C9E6E1; --accent-soft-text: #1B4F49; --border: #DEDDD9;
+    padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14171A; --surface: #1D2124; --text: #EDEDED; --text-muted: #9BA1A6;
+      --accent: #4FC3B9; --accent-soft: #1F3D3A; --accent-soft-text: #9FE3DA; --border: #2A2E32;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14171A; --surface: #1D2124; --text: #EDEDED; --text-muted: #9BA1A6;
+    --accent: #4FC3B9; --accent-soft: #1F3D3A; --accent-soft-text: #9FE3DA; --border: #2A2E32;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: 'Inter', sans-serif; line-height: 1.6;
+    transition: background .25s ease, color .25s ease;
+  }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em; margin: 0; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  .banner {
+    position: relative; height: 260px;
+    background: linear-gradient(135deg, var(--accent) 0%, #35424A 100%);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .pillnav {
+    position: absolute; top: calc(20px + env(safe-area-inset-top, 0px)); left: 24px;
+    display: flex; flex-direction: column; gap: 8px; z-index: 5;
+  }
+  .pillnav a, .themebtn {
+    background: rgba(255,255,255,0.92); color: #1A1A1A; text-decoration: none;
+    font-size: .82rem; font-weight: 500; padding: 8px 16px; border-radius: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15); border: none; cursor: pointer; text-align: center;
+  }
+  .themebtn { position: absolute; top: calc(20px + env(safe-area-inset-top, 0px)); right: 24px; width: 40px; height: 40px; border-radius: 50%; padding: 0; font-size: 16px; }
+
+  .profile-row {
+    display: flex; align-items: flex-end; gap: 24px; margin-top: -60px; position: relative; z-index: 3;
+    padding: 0 24px;
+  }
+  .avatar {
+    width: 128px; height: 128px; border-radius: 50%; border: 5px solid var(--bg);
+    background: var(--accent-soft); color: var(--accent-soft-text);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-size: 2.4rem; font-weight: 600; flex-shrink: 0;
+  }
+  .name-block { padding-bottom: 10px; }
+  .name-block h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 600; }
+  .name-block .role { color: var(--text-muted); font-size: 1rem; margin-top: 4px; }
+
+  section { max-width: 900px; margin: 0 auto; padding: 56px 24px; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  .tag { font-size: .8rem; color: var(--text-muted); margin-bottom: 8px; }
+  .intro p { max-width: 62ch; color: var(--text); }
+  .intro p .muted { color: var(--text-muted); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .infocard {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+  }
+  .infocard h3 { color: var(--accent); font-size: 1rem; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+  .infocard ul { margin: 0; padding-left: 18px; color: var(--text); font-size: .95rem; }
+  .infocard li { margin-bottom: 6px; }
+
+  .projects { display: flex; flex-direction: column; gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start;
+  }
+  .card .num { font-family: 'Space Grotesk', sans-serif; font-size: .85rem; color: var(--text-muted); padding-top: 4px; }
+  .card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+  .card p { margin: 0 0 10px; color: var(--text-muted); font-size: .93rem; }
+  .chip { display: inline-block; font-size: .76rem; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border); color: var(--text-muted); margin-right: 6px; }
+
+  .contact h2 { font-size: 1.6rem; margin-bottom: 10px; }
+  .contact p { color: var(--text-muted); max-width: 48ch; margin-bottom: 20px; }
+  .links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .links a { text-decoration: none; font-weight: 500; color: var(--text); border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+
+  footer { text-align: center; color: var(--text-muted); font-size: .82rem; padding: 28px 0 44px; }
+
+  @media (max-width: 640px) {
+    .grid2 { grid-template-columns: 1fr; }
+    .card { grid-template-columns: 1fr; }
+    .profile-row { flex-direction: column; align-items: flex-start; margin-top: -50px; }
+    .avatar { width: 100px; height: 100px; font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="pillnav">
+    <a href="#tentang">Tentang</a>
+    <a href="#karya">Karya</a>
+    <a href="#skill">Skill</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+  <button class="themebtn" id="themeToggle" aria-label="Ganti tema">◐</button>
+</div>
+
+<div class="profile-row">
+  <div class="avatar">NK</div>
+  <div class="name-block">
+    <h1>Nama Kamu</h1>
+    <div class="role">UI/UX Designer · Mahasiswa Computer Science, BINUS</div>
+  </div>
+</div>
+
+<section class="intro" id="tentang">
+  <div class="tag">Tentang</div>
+  <p>Halo! Saya mahasiswa Computer Science yang sedang menekuni UI/UX &amp; product design — dari wireframe di Figma sampai interface yang enak dipakai. <span class="muted">Latar belakang teknis membantu saya memahami batasan implementasi, jadi desain yang saya buat bukan cuma bagus dilihat, tapi juga masuk akal untuk dibangun.</span></p>
+</section>
+
+<section id="detail">
+  <div class="tag">Fokus &amp; cara kerja</div>
+  <div class="grid2">
+    <div class="infocard">
+      <h3>Keahlian</h3>
+      <ul>
+        <li>UI Design</li>
+        <li>Wireframing</li>
+        <li>Prototyping</li>
+        <li>Design system dasar</li>
+      </ul>
+    </div>
+    <div class="infocard">
+      <h3>Proses</h3>
+      <ul>
+        <li>Riset &amp; definisi masalah</li>
+        <li>Wireframe low-fidelity</li>
+        <li>Desain high-fidelity</li>
+        <li>Testing &amp; iterasi</li>
+      </ul>
+    </div>
+    <div class="infocard">
+      <h3>Tools</h3>
+      <ul>
+        <li>Figma</li>
+        <li>Adobe XD</li>
+        <li>Notion</li>
+        <li>HTML/CSS</li>
+      </ul>
+    </div>
+    <div class="infocard">
+      <h3>Area minat</h3>
+      <ul>
+        <li>Mobile app</li>
+        <li>Web app</li>
+        <li>Design system</li>
+        <li>Accessibility dasar</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="karya">
+  <div class="tag">Karya</div>
+  <div class="projects">
+    <div class="card">
+      <div class="num">01</div>
+      <div>
+        <h3>Redesign aplikasi kampus</h3>
+        <p>Merancang ulang alur pendaftaran mata kuliah yang membingungkan jadi lebih sederhana — lengkap dengan riset masalah, wireframe, sampai prototipe interaktif.</p>
+        <span class="chip">Studi kasus</span><span class="chip">Figma</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="num">02</div>
+      <div>
+        <h3>Daily UI Challenge</h3>
+        <p>Kumpulan eksplorasi antarmuka kecil — login screen, checkout, dashboard — dibuat rutin untuk melatih rasa layout, tipografi, dan komponen.</p>
+        <span class="chip">UI Exploration</span><span class="chip">Figma</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="num">03</div>
+      <div>
+        <h3>App booking laundry (brief mandiri)</h3>
+        <p>Studi kasus dari nol: menentukan masalah, riset singkat pengguna, wireframe, hingga desain akhir untuk aplikasi booking laundry sederhana.</p>
+        <span class="chip">Studi kasus</span><span class="chip">Prototype</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontak">
+  <h2>Ngobrol soal proyek atau kerja sama?</h2>
+  <p>Saya terbuka untuk internship, kolaborasi proyek, atau sekadar diskusi soal desain.</p>
+  <div class="links">
+    <a href="mailto:nama@email.com">Email</a>
+    <a href="https://github.com/wendylanjaya">GitHub</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Figma</a>
+  </div>
+</section>
+
+<footer>Dibuat dengan teliti. © 2026 Nama Kamu.</footer>
+
+<script>
+  (function() {
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    function apply(theme) {
+      root.setAttribute('data-theme', theme);
+      btn.textContent = theme === 'dark' ? '●' : '◐';
+    }
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    if (saved) apply(saved);
+    else apply(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    btn.addEventListener('click', function() {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
+
+</body>
+</html>
