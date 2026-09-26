@@ -38,10 +38,17 @@
     background: linear-gradient(135deg, var(--accent) 0%, #35424A 100%);
     padding-top: env(safe-area-inset-top, 0px);
   }
-  .pillnav {
+    .hamburger {
     position: absolute; top: calc(20px + env(safe-area-inset-top, 0px)); left: 24px;
-    display: flex; flex-direction: column; gap: 8px; z-index: 5;
+    background: rgba(255,255,255,0.92); border: none; border-radius: 50%;
+    width: 40px; height: 40px; font-size: 18px; cursor: pointer; z-index: 6;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
   }
+  .pillnav {
+    position: absolute; top: calc(68px + env(safe-area-inset-top, 0px)); left: 24px;
+    display: none; flex-direction: column; gap: 8px; z-index: 5;
+  }
+  .pillnav.open { display: flex; }
   .pillnav a, .themebtn {
     background: rgba(255,255,255,0.92); color: #1A1A1A; text-decoration: none;
     font-size: .82rem; font-weight: 500; padding: 8px 16px; border-radius: 20px;
@@ -112,7 +119,8 @@
 <body>
 
 <div class="banner">
-  <div class="pillnav">
+  <button class="hamburger" id="navToggle" aria-label="Buka menu">☰</button>
+  <div class="pillnav" id="pillnav">
     <a href="#tentang">Tentang</a>
     <a href="#karya">Karya</a>
     <a href="#skill">Skill</a>
@@ -237,15 +245,24 @@
   <div class="links">
     <a href="mailto:wendylanjaya@email.com">Email</a>
     <a href="https://github.com/wendylanjaya">GitHub</a>
-    <a href="#">https://www.linkedin.com/in/wendy-lanjaya-22b187326/</a>
+    <a href="https://www.linkedin.com/in/wendy-lanjaya-22b187326/">Linkedin</a>
     <a href="#">Figma</a>
   </div>
 </section>
 
-<footer>Dibuat dengan teliti. © 2026 Nama Kamu.</footer>
+<footer>Dibuat dengan teliti. © 2026 Wendy Lanjaya.</footer>
 
 <script>
   (function() {
+    const navToggle = document.getElementById('navToggle');
+    const pillnav = document.getElementById('pillnav');
+    navToggle.addEventListener('click', function() {
+      pillnav.classList.toggle('open');
+    });
+    pillnav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() { pillnav.classList.remove('open'); });
+    });
+
     const root = document.documentElement;
     const btn = document.getElementById('themeToggle');
     function apply(theme) {
@@ -263,6 +280,6 @@
     });
   })();
 </script>
-
+  
 </body>
 </html>
