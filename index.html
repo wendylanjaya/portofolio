@@ -39,10 +39,20 @@
     padding-top: env(safe-area-inset-top, 0px);
 }
   .shape { position: absolute; border-radius: 50%; z-index: 1; }
-  .shape-1 { width: 260px; height: 260px; background: rgba(255,255,255,0.08); top: -90px; right: -60px; }
-  .shape-2 { width: 170px; height: 170px; border: 2px solid rgba(255,255,255,0.18); bottom: -70px; left: 18%; }
-  .shape-3 { width: 60px; height: 60px; background: #FF6FD8; opacity: 0.85; top: 36px; right: 200px; }
-  .shape-4 { width: 36px; height: 36px; background: #4FD1C5; opacity: 0.75; bottom: 24px; right: 70px; }
+.shape-1 {
+  width: 380px; height: 380px; top: -160px; right: -100px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,111,216,0.85), rgba(255,111,216,0) 70%);
+}
+.shape-2 {
+  width: 240px; height: 240px; bottom: -110px; left: 6%;
+  background: radial-gradient(circle at 30% 30%, rgba(167,139,250,0.55), rgba(167,139,250,0) 70%);
+}
+.shape-3 {
+  width: 90px; height: 70px; top: 24px; right: 220px; border-radius: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.4) 1.5px, transparent 1.5px);
+  background-size: 10px 10px;
+}
+.shape-4 { display: none; }
   
     .hamburger {
     position: fixed; top: calc(20px + env(safe-area-inset-top, 0px)); left: 24px;
