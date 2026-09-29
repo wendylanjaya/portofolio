@@ -4,13 +4,13 @@ Welcome to my personal portfolio repository.
 
 I am a Computer Science student at BINUS University with a primary interest in Data Analytics and Data Visualization, while also exploring UI/UX and Web Design.
 
-## 🌐 Portfolio
+## Portfolio
 
 Visit my portfolio website:
 
 [wendylanjaya.github.io/portofolio](https://wendylanjaya.github.io/portofolio/)
 
-## 🛠️ Skills
+## Skills
 
 ### Data Analytics
 - Python
@@ -30,7 +30,7 @@ Visit my portfolio website:
 - HTML
 - CSS
 
-## 📂 Repository Contents
+## Repository Contents
 
 - `index.html` — Personal portfolio website
 - `CV Wendy Lanjaya.pdf` — Curriculum Vitae
