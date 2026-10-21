@@ -126,7 +126,7 @@
       font-size: 1rem;
     }
 
-    /* HERO (LAYOUT 2 KOLOM) */
+    /* HERO */
     .hero {
       min-height: 85vh;
       display: flex;
@@ -215,6 +215,7 @@
       width: 100%;
       height: 420px;
       object-fit: cover;
+      object-position: top; /* Mencegah kepala terpotong */
       border-radius: 20px;
       box-shadow: var(--shadow);
     }
@@ -252,6 +253,10 @@
       grid-template-columns: 1fr 1fr;
       gap: 50px;
       align-items: start;
+    }
+
+    .about-text .section-title {
+      margin-bottom: 25px;
     }
 
     .about-text p {
@@ -572,13 +577,14 @@
     <!-- ABOUT -->
     <section id="about">
       <div class="container">
-        <div class="section-title">
-          <span>01 — Tentang Saya</span>
-          <h2>About Me</h2>
-        </div>
-
         <div class="about-grid">
+          
           <div class="about-text">
+            <div class="section-title">
+              <span>01 — Tentang Saya</span>
+              <h2>About Me</h2>
+            </div>
+
             <p>
               Saya adalah mahasiswa Computer Science di BINUS University
               yang memiliki ketertarikan utama pada bidang
@@ -609,6 +615,7 @@
               <li>Web Design</li>
             </ul>
           </div>
+
         </div>
       </div>
     </section>
