@@ -33,6 +33,8 @@
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     }
 
+    
+
     * {
       margin: 0;
       padding: 0;
@@ -71,6 +73,32 @@
       width: min(1100px, 90%);
       margin: auto;
     }
+
+    /* Layout Nama & Foto Menyamping */
+.hero-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Ukuran & Tampilan Foto */
+.title-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+
+/* Penyesuaian Tampilan Layar Kecil / HP */
+@media (max-width: 768px) {
+  .title-avatar {
+    width: 55px;
+    height: 55px;
+  }
+}
 
     /* NAVBAR */
 
